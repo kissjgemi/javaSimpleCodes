@@ -76,11 +76,11 @@ public class SoutLog {
         return str;
     }
 
-    public void sout(String str) {
+    public static void sout(String str) {
         System.out.print(str);
     }
 
-    public void soutln(String str) {
+    public static void soutln(String str) {
         System.out.println(str);
     }
 }

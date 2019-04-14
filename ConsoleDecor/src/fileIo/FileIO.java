@@ -12,21 +12,23 @@ import java.util.List;
  */
 public class FileIO {
 
-    private String inputUrl;
-    private String outputUrl;
+    private final String INPUT_URL;
+    private final String OUTPUT_URL;
 
     private final String MODE_R = "r";
     private final String MODE_RW = "rw";
 
+    private final String CHAR_SET = "UTF-8";
+
     private RandomAccessFile f;
 
     public FileIO(String inputFile, String outputFile) {
-        this.inputUrl = inputFile;
-        this.outputUrl = outputFile;
+        this.INPUT_URL = inputFile;
+        this.OUTPUT_URL = outputFile;
     }
 
     public void deleteFile() {
-        File file = new File(outputUrl);
+        File file = new File(OUTPUT_URL);
         if (file.exists()) {
             file.delete();
         }
@@ -35,7 +37,7 @@ public class FileIO {
     public List<String> inputFile() {
         List<String> inputList = new ArrayList<>();
         try {
-            f = new RandomAccessFile(inputUrl, MODE_R);
+            f = new RandomAccessFile(INPUT_URL, MODE_R);
             String sor;
             while ((sor = f.readLine()) != null) {
                 inputList.add(sor);
@@ -45,31 +47,26 @@ public class FileIO {
             System.err.println(e.getMessage());
             System.exit(-1);
         }
-        System.out.println(inputUrl + "... beolvasva\n");
+        printLine(INPUT_URL + "... beolvasva\n");
         return inputList;
     }
 
-    /*
-    str = str.replace("ő", String.valueOf((char) 245));
-    str = str.replace("Ő", String.valueOf((char) 213));
-    str = str.replace("ű", String.valueOf((char) 251));
-    str = str.replace("Ű", String.valueOf((char) 219));
-     */
     public void appendFile(String str) {
-        File file = new File(outputUrl);
-        str = str.replace('ő', 'ö');
-        str = str.replace('Ő', 'Ö');
-        str = str.replace('ű', 'ü');
-        str = str.replace('Ű', 'Ü');
+        File file = new File(OUTPUT_URL);
         long fileLength = file.length();
         try {
-            f = new RandomAccessFile(outputUrl, MODE_RW);
+            f = new RandomAccessFile(OUTPUT_URL, MODE_RW);
             f.seek(fileLength);
-            f.writeBytes(str + "\n");
+            f.write((str + "\n").getBytes());
             f.close();
         } catch (IOException e) {
-            System.err.println("Fájl íráási hiba: : " + e.getMessage());
+            printLine("Fájl írási hiba: : " + e.getMessage());
             System.exit(-1);
         }
+    }
+
+    public void printLine(String str) {
+        appendFile(str);
+        sout.SoutLog.soutln(str);
     }
 }
