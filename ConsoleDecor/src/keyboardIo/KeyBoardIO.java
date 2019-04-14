@@ -31,7 +31,7 @@ public class KeyBoardIO {
         String input;
         do {
             input = getString(label, io);
-        } while (!"in".contains(input));
+        } while (!(in.contains(input) && input.length() == 1));
         return input.charAt(0) != in.charAt(0);
     }
 
