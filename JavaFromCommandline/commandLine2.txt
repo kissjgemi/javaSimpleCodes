@@ -1,0 +1,11 @@
+commandLine.txt
+
+create "/one/service" dir and the MagicService.java file.
+
+... javac -cp ./src/main/java ./src/main/java/com/exec/one/*.java ./src/main/java/com/exec/one/**/*.java -d ./out/
+... jar cvfm ExecutableOne.jar ./src/main/resources/meta-inf/manifest.mf -C ./out/ .
+
+... java -jar ./ExecutableOne.jar
+Main Class Start
+MESSAGE : Magic Message
+

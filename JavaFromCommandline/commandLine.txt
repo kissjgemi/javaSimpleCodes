@@ -1,0 +1,92 @@
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/$ cd commandLine
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine$
+
+... mkdir libs
+... mkdir out
+... echo "# commandLineJava" >> README.md
+... mkdir src
+... cd src
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src$
+
+... mkdir main
+... cd main
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src/main$ 
+
+... mkdir resources
+... mkdir java
+... cd java
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src/main/java$ 
+
+... mkdir com
+... cd com
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src/main/java/com$
+
+... mkdir exec
+... cd exec
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src/main/java/com/exec$
+
+... mkdir one
+... cd one
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src/main/java/com/exec/one$
+
+... echo "package com.exec.one;" >> Main.java
+... echo "" >> Main.javaain
+... echo "public class Main {" >> Main.java
+... echo "    public static void main(String[] args){ " >> Main.java
+... echo "        System.out.println(\"Main Class Start\");" >> Main.java
+... echo "    }" >> Main.java
+... echo "}" >> Main.java
+... echo "" >> Main.java
+
+... cd ..
+... cd ..
+... cd ..
+... cd ..
+... cd resources
+... mkdir meta-inf
+... cd meta-inf
+
+kissjgabi@b6dell7i:/mnt/3D3E39C5204FF09E/Oraculum/aB6main/commandLine/src/main/resources/meta-inf$
+
+... echo "Manifest-Version: 1.0" >> manifest.mf
+... echo "Class-Path: ." >> manifest.mf
+... echo "Main-Class: com.exec.one.Main" >> manifest.mf
+
+/** meanwhile
+... sudo apt-get update
+... sudo apt-get upgrade
+... sudo apt-get install default-jdk
+**/
+
+... javac -cp ./src/main/java ./src/main/java/com/exec/one/*.java -d ./out/
+... jar cvfm ExecutableOne.jar ./src/main/resources/meta-inf/manifest.mf -C ./out/ .
+
+... java -jar ./ExecutableOne.jar
+Main Class Start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

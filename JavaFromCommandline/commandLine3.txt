@@ -1,0 +1,48 @@
+folder structure
+
+./libs
+./libs/ExecutableOne.jar
+./out
+./README.md
+./src
+./src/main
+./src/main/java
+./src/main/java/com
+./src/main/java/com/exec
+./src/main/java/com/exec/two
+./src/main/java/com/exec/two/Main.java
+./src/main/resources
+./src/main/resources/META-INF
+./src/main/resources/META-INF/MANIFEST.MF
+
+
+... javac -cp ./src/main/java ./src/main/java/com/exec/two/*.java -d ./out/ -classpath ./libs/ExecutableOne.jar
+The "Executable-Two" project has been successfully compiled into the OUT directory.
+
+Copy, unpack and delete the ExecutableOne.jar:
+... cp libs/ExecutableOne.jar ./out/
+... cd ./out
+... fájlkezelőben kibontani és összefésülni
+... és törölni az 'ExecutableOne.jar'-t meg a fölösleget
+The "Executable-Two" project output directory is ready to be used as the source folder for the new JAR file.
+
+------------------------------------------
+./src/main/resources/meta-inf/manifest.mf:
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: com.exec.two.Main
+------------------------------------------
+
+create ExecutableTwo.jar:
+... jar cvfm ExecutableTwo.jar ./src/main/resources/meta-inf/manifest.mf -C ./out/ .
+
+execute ExecutableTwo.jar
+
+... java -jar ./ExecutableTwo.jar
+
+Executable-Two Main
+MagicService from Executable-ONE
+MESSAGE: Magic Message
+
+
+
